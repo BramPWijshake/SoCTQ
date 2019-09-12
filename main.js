@@ -16,42 +16,20 @@ function drawHex(canvas, x, y, radius = 50)
 function drawGrid(canvas, width = 800, height = 800, columns = 5)
 {
   
-  var middle_column = Math.ceil(columns / 2);
-  console.log(middle_column);
-  for (var column = 1; column <= columns; column++)
+  var middle_column = Math.ceil(columns / 2); // Find middle column to calc offset and amount
+  for (var column = 1; column <= columns; column++) // For each column
   {
-    var distance_from_middle = Math.max(middle_column, column) - Math.min(middle_column, column);
-    console.log(distance_from_middle);
-    for (var row = distance_from_middle + 1; row <= columns*2 - distance_from_middle; row+=2)
+    var distance_from_middle = Math.max(middle_column, column) - Math.min(middle_column, column); // Calc distance from middle column
+    for (var row = distance_from_middle + 1; row < columns*1.7 - distance_from_middle; row+=2) // For each row
     {
-      x = width / columns * column;
-      y = height / 9 * row;
-      drawHex(canvas, x, y, 45);
+      x = width / (columns+1) * column; // Get x to draw tile
+      y = height / (columns*2) * row; // Get y to draw tile
+      drawHex(canvas, x, y, 1/columns*190);
     }
   }
 }
 
 var canvas = document.querySelector('#canvas').getContext('2d');
-var width = canvas.width;
-var height = canvas.height;
-drawGrid(canvas, width, height);
-
-
-// var x = [50, 90, 130]
-
-// drawHex(canvas, x[0], 100, 25);
-// drawHex(canvas, x[0], 200, 25);
-// drawHex(canvas, x[0], 300, 25);
-// drawHex(canvas, x[0], 400, 25);
-
-// drawHex(canvas, x[1], 50, 25);
-// drawHex(canvas, x[1], 150, 25);
-// drawHex(canvas, x[1], 250, 25);
-// drawHex(canvas, x[1], 350, 25);
-// drawHex(canvas, x[1], 450, 25);
-
-// drawHex(canvas, x[2], 50, 25);
-// drawHex(canvas, x[2], 150, 25);
-// drawHex(canvas, x[2], 250, 25);
-// drawHex(canvas, x[2], 350, 25);
-// drawHex(canvas, x[2], 450, 25);
+var width = document.querySelector('#canvas').width;
+var height = document.querySelector('#canvas').height;
+drawGrid(canvas, width, height, 11);
