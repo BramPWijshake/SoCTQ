@@ -13,22 +13,28 @@ function drawHex(canvas, x, y, radius = 50)
   canvas.fill();
 }
 
-function drawGrid(canvas, width = 100, height = 100, columns = 5)
+function drawGrid(canvas, width = 800, height = 800, columns = 5)
 {
   
-  var offset = 3;
-  
-  for(var x = 0; x <= 5; x++)
+  var middle_column = Math.ceil(columns / 2);
+  console.log(middle_column);
+  for (var column = 1; column <= columns; column++)
   {
-    for(var y = 0; y <= offset + 1; y++)
+    var distance_from_middle = Math.max(middle_column, column) - Math.min(middle_column, column);
+    console.log(distance_from_middle);
+    for (var row = distance_from_middle + 1; row <= columns*2 - distance_from_middle; row+=2)
     {
-      drawHex(canvas, 50, 100, 25);
+      x = width / columns * column;
+      y = height / 9 * row;
+      drawHex(canvas, x, y, 45);
     }
   }
 }
 
 var canvas = document.querySelector('#canvas').getContext('2d');
-drawGrid(canvas);
+var width = canvas.width;
+var height = canvas.height;
+drawGrid(canvas, width, height);
 
 
 // var x = [50, 90, 130]
