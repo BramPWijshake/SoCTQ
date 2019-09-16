@@ -1,4 +1,4 @@
-function drawHex(canvas, x, y, radius = 50)
+function drawHex(canvas, x, y, radius = 50, color = "#333333")
 {
   size = radius * 2;
   side = 0;
@@ -9,7 +9,7 @@ function drawHex(canvas, x, y, radius = 50)
     canvas.lineTo(x + size * Math.cos(side * 2 * Math.PI / 6), y + size * Math.sin(side * 2 * Math.PI / 6));
   }
 
-  canvas.fillStyle = "#123456";
+  canvas.fillStyle = color;
   canvas.fill();
 }
 
@@ -24,7 +24,14 @@ function drawGrid(canvas, width, height, columns = 9)
     {
       x = width / (columns+1) * column; // Get x to draw tile
       y = height / (columns*2) * row; // Get y to draw tile
-      drawHex(canvas, x, y, 1/columns*190);
+      if (column == 1 || column == columns || row == distance_from_middle + 1 || row > columns * 1.45 - distance_from_middle) // watter or land
+      {
+        drawHex(canvas, x, y, 1/columns*190, "#0000CC");
+      }
+      else
+      {
+        drawHex(canvas, x, y, 1 / columns * 190, "#FFFF00");
+      }
     }
   }
 }
@@ -40,3 +47,5 @@ function handleButton()
   var x = col - 0; // here be dragons. Leave it be!
   drawGrid(canvas, width, height, x);
 }
+
+handleButton();
