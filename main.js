@@ -9,11 +9,11 @@ function drawHex(canvas, x, y, radius = 50)
     canvas.lineTo(x + size * Math.cos(side * 2 * Math.PI / 6), y + size * Math.sin(side * 2 * Math.PI / 6));
   }
 
-  canvas.fillStyle = "#333333";
+  canvas.fillStyle = "#123456";
   canvas.fill();
 }
 
-function drawGrid(canvas, width = 800, height = 800, columns = 5)
+function drawGrid(canvas, width, height, columns = 9)
 {
   
   var middle_column = Math.ceil(columns / 2); // Find middle column to calc offset and amount
@@ -29,7 +29,14 @@ function drawGrid(canvas, width = 800, height = 800, columns = 5)
   }
 }
 
-var canvas = document.querySelector('#canvas').getContext('2d');
-var width = document.querySelector('#canvas').width;
-var height = document.querySelector('#canvas').height;
-drawGrid(canvas, width, height, 11);
+
+function handleButton()
+{
+  var canvas = document.querySelector('#canvas').getContext('2d');
+  var width = document.querySelector('#canvas').width;
+  var height = document.querySelector('#canvas').height;
+  var col = document.querySelector("#players").value;
+  canvas.clearRect(0, 0, width, height);
+  var x = col - 0; // here be dragons. Leave it be!
+  drawGrid(canvas, width, height, x);
+}
