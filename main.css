@@ -20,8 +20,11 @@
 }
 
 #menu {
-  background-color: red;
   padding: 20px;
+}
+
+#logo {
+  width: 200px;
 }
 
 #menu .button {
