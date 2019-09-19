@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen" href="./main.css" />
+  <script defer src="./main.js"></script>
+</head>
+
+<body>
+
+
+    <div id="container" class="container-fluid">
+      <div class="columns">
+        <aside id="menu" class="column is-one-fifth">
+          <nav class="menu">
+            <p class="menu-label">
+              Opties
+            </p>
+            <div class="select">
+              <select id="players">
+                <option value="9">4 - 5 players</option>
+                <option value="11">5 - 6 players</option>
+                <option value="13">6 - 7 players</option>
+              </select>
+            </div>
+            <p class="menu-label">
+              Actions
+            </p>
+            <p class="control">
+              <a class="button is-fullwidth is-primary" onclick="handleButton()">
+                Generate
+              </a>
+              <a class="button is-fullwidth">Save</a>
+              <a class="button is-fullwidth">Load</a>
+              <a class="button is-fullwidth">Options</a>
+            </p>
+          </nav>
+        </aside>
+        <main id="board" class="column">
+          <canvas id="canvas" height="800" width="800"></canvas>
+        </main>
+      </div>
+
+</body>
+
+</html>

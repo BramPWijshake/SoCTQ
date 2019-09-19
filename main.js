@@ -24,7 +24,7 @@ function drawGrid(canvas, width, height, columns = 9)
     {
       x = width / (columns+1) * column; // Get x to draw tile
       y = height / (columns*2) * row; // Get y to draw tile
-      if (column == 1 || column == columns || row == distance_from_middle + 1 || row > columns * 1.45 - distance_from_middle) // watter or land
+      if (column == 1 || column == columns || row == distance_from_middle + 1 || row > columns * 1.50 - distance_from_middle) // watter or land
       {
         drawHex(canvas, x, y, 1/columns*190, "#0000CC");
       }
