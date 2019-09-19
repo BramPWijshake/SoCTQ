@@ -26,11 +26,11 @@ function drawGrid(canvas, width, height, columns = 9)
       y = height / (columns*2) * row; // Get y to draw tile
       if (column == 1 || column == columns || row == distance_from_middle + 1 || row > columns * 1.50 - distance_from_middle) // watter or land
       {
-        drawHex(canvas, x, y, 1/columns*190, "#0000CC");
+        drawHex(canvas, x, y, 1 / columns * 190, "#209CEE");
       }
       else
       {
-        drawHex(canvas, x, y, 1 / columns * 190, "#FFFF00");
+        drawHex(canvas, x, y, 1 / columns * 190, "#FFDD57");
       }
     }
   }

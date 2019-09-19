@@ -2,7 +2,6 @@
   height: 100vh;
   box-sizing: border-box;
   border: 0;
-  overflow: hidden;
 }
 
 #board {
@@ -20,11 +19,7 @@
 }
 
 #menu {
-  padding: 20px;
-}
-
-#logo {
-  width: 200px;
+  padding-left: 20px;
 }
 
 #menu .button {
