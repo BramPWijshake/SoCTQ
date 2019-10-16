@@ -7,5 +7,13 @@ namespace KVTQ
 {
     public class StrategicValueCollection
     {
+        List<StrategicValue> StrategicValueList = new List<StrategicValue>();
+
+        public void PopulateStrategicValueList()
+        {
+
+        }
+
+
     }
 }

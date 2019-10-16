@@ -7,5 +7,23 @@ namespace KVTQ
 {
     public class Boardmanager
     {
+        Database database = new Database();
+        Board board = new Board();
+
+
+        public void GenerateBoard()
+        {
+
+        }
+
+        public void GenerateLayout(var layout)
+        {
+
+        }
+
+        public void SaveBoard()
+        {
+
+        }
     }
 }

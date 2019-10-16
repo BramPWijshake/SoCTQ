@@ -7,5 +7,20 @@ namespace KVTQ
 {
     public class StrategicValue
     {
+        public int Value { get; }
+        public bool InUse;
+        List<Tile> TileList;
+
+        public StrategicValue()
+        {
+
+        }
+
+        //of al in constructor?
+        private void CalculateValue()
+        {
+
+        }
+
     }
 }
