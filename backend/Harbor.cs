@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 
 namespace KVTQ
 {
-    public class Harbor
+    public class Harbor : Tile
     {
+        public int alignment { get; } // in discrete stappen van graden?
+
+        //public void CalculateAlignment() ???
     }
 }

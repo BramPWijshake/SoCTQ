@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace KVTQ
 {
-    public class Resource
+    public class Resource : Tile
     {
+       public int value { get; }
     }
 }
