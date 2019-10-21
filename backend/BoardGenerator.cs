@@ -10,6 +10,11 @@ namespace KVTQ
         //opties als properties/constructor er nog in zetten
         //alternatief opties als parameters voor methoden gebruiken
 
+        public BoardGenerator()
+        {
+            //opties
+        }
+
         public void GenerateResources()
         {
 

@@ -13,6 +13,11 @@ namespace KVTQ
         StrategicValueCollection strategicValueCollection = new StrategicValueCollection();
         
         // rest van de opties moeten hier nog in
+
+        public Board()
+        {
+            //opties
+        }
         
     }
 }
