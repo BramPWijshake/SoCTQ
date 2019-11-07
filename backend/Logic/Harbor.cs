@@ -9,6 +9,11 @@ namespace KVTQ
     {
         public int alignment { get; } // in discrete stappen van graden?
 
+        public Harbor(int Alignment, int[] Position, ResourceType rType) : base(Position, rType)
+        {
+            this.alignment = Alignment;
+        }
+
         //public void CalculateAlignment() ???
     }
 }

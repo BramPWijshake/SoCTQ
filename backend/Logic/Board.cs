@@ -9,7 +9,7 @@ namespace KVTQ
     {
         public int NumberOFplayers; // niet beter in een enum of iets dergelijks?
         BoardGenerator boardGenerator = new BoardGenerator();
-        List<Tile> TileList;
+        List<Tile> TileList { get; set; }
         StrategicValueCollection strategicValueCollection = new StrategicValueCollection();
         
         // rest van de opties moeten hier nog in

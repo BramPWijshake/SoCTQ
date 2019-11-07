@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace KVTQ
 {
-    public class Tile
+    public abstract class Tile
     {
         public enum ResourceType
         {
@@ -13,7 +13,14 @@ namespace KVTQ
             Harbor
         }
 
-        public ResourceType resourceType { get; }
-        public int position { get; }
+        public ResourceType resourceType { get; } //is dit nodig? inhertetance etc
+        protected int[] position { get; } = new int[2]; //positie als x-y in 2d array
+
+        protected Tile(int[] Position, ResourceType rType)
+        {
+            this.position = Position;
+            this.resourceType = rType;
+        }
+
     }
 }

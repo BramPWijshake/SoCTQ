@@ -7,7 +7,6 @@ namespace KVTQ
 {
     public class Boardmanager
     {
-        Database database = new Database();
         Board board = new Board();
 
 
@@ -16,7 +15,7 @@ namespace KVTQ
 
         }
 
-        public void GenerateLayout(var layout)
+        public void GenerateLayout(var jsonlayout)
         {
 
         }
