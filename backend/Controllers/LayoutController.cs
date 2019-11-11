@@ -6,21 +6,25 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KVTQ.Controllers
 {
-    [Route("/api/StandardLayout")]
-    public class StandardLayoutController : ControllerBase
+    [Route("/api/StandardLayout/All")]
+    public class StandardLayoutAllController : ControllerBase
     {
-        [HttpGet("/All")]
+        [HttpGet("")]
         public string GetAllLayouts()
         {
-            string Slayouts = " ";
+            string Slayouts = "Test All";
 
             return Slayouts;
         }
+    }
 
+    [Route("/api/StandardLayout/Specific")]
+    public class StandardLayoutSpecificController : ControllerBase
+    {
         [HttpGet("{id}")]
         public string GetLayout(int id)
         {
-            string Slayout = " ";
+            string Slayout = "Test Specific";
 
             return Slayout;
         }
@@ -32,7 +36,7 @@ namespace KVTQ.Controllers
         [HttpGet("{type}/{size}")]
         public string GenerateLayout(string type, int id)
         {
-            string Glayout = " ";
+            string Glayout = "Test Generate";
 
             return Glayout;
         }
