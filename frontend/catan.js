@@ -1,12 +1,10 @@
-// ----- Canvas globals -----
+//Canvas variabelen aanmaken
 
 var mapCanvas;
 var drawingContext;
 
 var canvasCenterX;
 var canvasCenterY;
-
-// ----- Hexagon drawing parameters -----
 
 var mapStyle = "retro";
 
@@ -46,27 +44,14 @@ var resourceTypeToImageCanvas = {
 	"sea": null
 };
 
-//var allImagesLoaded = false;
 
-// ----- Grid layout globals -----
+//Posities bepalen
 
 var dx = size * (1 + Math.cos(Math.PI/3)) / 2;
 var dy = size * Math.sin(Math.PI/3);
 
-/*
- * Formula:
- * 
- * Height = (coordSpacing + 2) * dy
- *        = (coordSpacing + 2) * Math.sin(Math.PI/3) * size
- * Size = Height / ( (coordSpacing + 2) * Math.sin(Math.PI/3) )
- * 
- * Width = (coordSpacing * dx) + (2 * size)
- *       = (coordSpacing * (1 + Math.cos(Math.PI/3)) / 2 * size) + (2 * size)
- *       = ( (coordSpacing * (1 + Math.cos(Math.PI/3)) / 2) + 2 ) * size
- * Size = Width / ( (coordSpacing * (1 + Math.cos(Math.PI/3)) / 2) + 2 )
-*/
 
-// ----- Map definition globals -----
+//Coordinaten, getallen en tiles vaststellen
 
 var catanMap = new CatanMap();
 
@@ -108,11 +93,12 @@ standardMap.coordinatesArray = [
 	[2,3],[2,1],[2,-1],[2,-3],
 	[4,2],[4,0],[4,-2]
 ];
-
+//Useless right now
 standardMap.harborAlignments = {
 	1: 1,
 	2: 1,
-	3: 1
+	3: 1,
+	4: 1
 }
 
 standardMap.landCoordinatesArray = [
@@ -151,7 +137,6 @@ standardMap.harborCoordinatesArray2 = [
 	[4,4],
 	[6,1],[6,-3]
 ];
-
 
 
 var normalMap = new MapDefinition();
@@ -310,10 +295,10 @@ expandedMap.harborCoordinatesArray2 = [
 
 ];
 
-// ----- FUNCTIONS -----
+//Functies
 
 window.onresize = function(event) {
-	//Om de map te updaten
+	//Om de map te updaten 
 	sizeCanvas();
 	catanMap.resize();
 	catanMap.draw();
@@ -326,7 +311,7 @@ function init() {
 		var button = $('button#gen-map-button')[0];
 		$(button).click(generate);
 		button.disabled = false;
-		button.innerHTML = "Click to generate.";
+		button.innerHTML = "Click om te starten.";
 	});
 	
 	addCanvas();
@@ -334,6 +319,7 @@ function init() {
 }
 
 function preloadImages(arr, callback){
+	//Zie volgende functie
 	
     var newimages=[], loadedimages=0;
     var postaction=function(){};
@@ -341,7 +327,7 @@ function preloadImages(arr, callback){
     function imageloadpost(){
         loadedimages++;
         if (loadedimages==arr.length){
-            callback(newimages); //call postaction and pass in newimages array as parameter
+            callback(newimages); 
         }
     }
     for (var i=0; i<arr.length; i++){
@@ -358,7 +344,7 @@ function preloadImages(arr, callback){
 }
 
 function loadImages(callback) {
-	//Om de images te binden aan de tiles
+	//Om de img paths te laden
 
 	var rTypes = [];
 	var imgPaths = [];
@@ -370,15 +356,12 @@ function loadImages(callback) {
 	preloadImages(imgPaths, function(images) {
 		
 		for (var i = 0; i < imgPaths.length; i += 1) {
-			//resourceTypeToImage[ rTypes[i] ] = images[i];
 			var img = images[i];
 			var imgCanvas = document.createElement("canvas");
 			var imgContext = imgCanvas.getContext("2d");
 			
 			imgCanvas.width = img.width;
 			imgCanvas.height = img.height;
-			//imgContext.translate(imgCanvas.width/2, imgCanvas.height/2);
-			//imgContext.rotate(Math.PI / 180 * (60));
 			imgContext.drawImage(img, 0, 0);
         	
 			
@@ -411,24 +394,18 @@ function generate() {
 	catanMap.defineMap(mapDef);
 	catanMap.generate();
 	catanMap.resize();
-	catanMap.draw();
-	//rotateImage();
-	
+	catanMap.draw();	
 	
 }
-
-function rotateImage() {
-        var img = document.getElementById('map-container');
-        img.style.transform = 'rotate(30deg)';
-}
-
 
 function MapDefinition() {
 	this.resourceDict = null;
 	this.numberDict = null;
 	this.coordinatesArray = null;
 }
+
 MapDefinition.prototype.checkValidity = function() {
+	//Checken of er genoeg coords/tiles/numbers zijn
 	var cArrLen = this.coordinatesArray.length;
 	var rDictLen = this.sumDictVals(this.resourceDict);
 	var nDictLen = this.sumDictVals(this.numberDict);
@@ -438,6 +415,7 @@ MapDefinition.prototype.checkValidity = function() {
 	
 	return (cArrLen == rDictLen) && (rDictLen == (nDictLen + numDeserts + numSeas + numHarbors));
 }
+
 MapDefinition.prototype.sumDictVals = function(dict) {
 	var sum = 0;
 	for (var key in dict) {
@@ -486,8 +464,7 @@ CatanMap.prototype.defineMap = function(mapDefinition) {
 	}
 }
 CatanMap.prototype.generate = function() {
-	//Het genereren van tiles!!! Hier moet de JSON geinsert worden, dus ipv dat ie random hier de tiles toekent aan coordinates, word dit in de back-end gedaan en assign ik ze hier. Zolang jullie me eerst de 6/8 tiles kunnen geven.
-	
+	//het genereren van de map	
 	if (this.mapDefinition) {
 		
 		this.hexTiles = [];
@@ -514,7 +491,7 @@ CatanMap.prototype.generate = function() {
 		}
 
 
-		
+		//hier split hij alle land tiles van de zeetiles/desert
 		var tileTypes = [];
 		for (var key in this.mapDefinition.resourceDict) {
 			if (key != "desert" && key != "sea" && key != "randomHarbor" && key != "sheepHarbor" && key != "woodHarbor" && key != "grainHarbor" && key != "clayHarbor" && key != "oreHarbor") {
@@ -522,8 +499,9 @@ CatanMap.prototype.generate = function() {
 					tileTypes.push(key);
 				}
 			}
-		}	
+		}
 
+		//Eerst handelt hij alle harbors/zee/deserts
 		var newCoords = null;
 		var newAlignment = null;
 		var numHarbors = this.mapDefinition.resourceDict["randomHarbor"]+this.mapDefinition.resourceDict["sheepHarbor"]+this.mapDefinition.resourceDict["clayHarbor"]+this.mapDefinition.resourceDict["oreHarbor"]+this.mapDefinition.resourceDict["woodHarbor"]+this.mapDefinition.resourceDict["grainHarbor"];
@@ -612,7 +590,6 @@ CatanMap.prototype.generate = function() {
 			this.coordToTile[newCoords.toString()] = harborHexTile;
 		}
 
-		//Sea Test Jank Code
 		var numSeas = this.mapDefinition.resourceDict["sea"];
 		
 		for (var i = 0; i < numSeas; i += 1) {
@@ -641,7 +618,7 @@ CatanMap.prototype.generate = function() {
 			this.coordToTile[newCoords.toString()] = desertHexTile;
 		}
 
-		//Daarna handelt het programma 6/8 tiles		
+		//Daarna schijdt het programma de 6/8 tiles		
 		var highlyProductiveIdx = [];
 		highlyProductiveIdx = highlyProductiveIdx.concat(
 			tileNumbers.indexOfArray(6),
@@ -651,7 +628,7 @@ CatanMap.prototype.generate = function() {
 			tileNumbers.swap(i,highlyProductiveIdx[i]);
 		}
 		
-		//Hierna handelt het programma de rest at random
+		//Hierna handelt het programma de rest at random en reshuffled 6/8 tiles als ze bij elkaar liggen
 		for (var i = 0; i < (numTiles - numDeserts - numSeas - numHarbors); i += 1) {
 			
 			var newHexTile = new HexTile();
@@ -689,22 +666,19 @@ CatanMap.prototype.generate = function() {
 	} else {
 		console.log("No map definition.");
 	}
-	
 }
+//Tekenen van de hextiles
 CatanMap.prototype.draw = function() {
-
 	if (this.hexTiles) {
 		drawingContext.clear();
 		for (var i = 0; i < this.hexTiles.length; i += 1) {
 			this.hexTiles[i].draw();
 		}
-	}
-	
+	}	
 }
+//Resize canvas functie
 CatanMap.prototype.resize = function() {
-/* Size = Height / ( (coordSpacing + 2) * Math.sin(Math.PI/3) )
- * Size = Width / ( (coordSpacing * (1 + Math.cos(Math.PI/3)) / 2) + 2 )
-*/
+
 	var wSize = (mapCanvas.width-10) / 
 		( (this.coordSpan[0] * (1 + Math.cos(Math.PI/3)) / 2) + 2 );
 	var hSize = (mapCanvas.height-10) / 
@@ -713,31 +687,9 @@ CatanMap.prototype.resize = function() {
 	dx = size * (1 + Math.cos(Math.PI/3)) / 2;
 	dy = size * Math.sin(Math.PI/3);
 }
-CatanMap.prototype.getAdjacentTiles = function(tile) {
-	
-	var tileX = tile.gridX;
-	var tileY = tile.gridY;
-	
-	var adjTiles = [];
-	
-	// (+0,+2), (+2,+1), (+2,-1), (+0,-2), (-2,-1), (-2,1)
-	xshift = [0, 2, 2, 0, -2, -2];
-	yshift = [2, 1, -1, -2, -1, 1];
-	
-	for (var i = 0; i < 6; i += 1) {
-		var adjTile = this.coordToTile[
-			[tileX + xshift[i], tileY + yshift[i]].toString()
-		];
-		// Will be null if no hex tile found at that coordinate
-		if (adjTile) {
-			adjTiles.push(adjTile);
-		}
-	}
-	
-	return adjTiles;
-	
-}
-//hier checkt hij of er 6/8 tiles naast elkaar liggen
+
+
+//Check voor 6/8 tiles naast elkaar
 CatanMap.prototype.hasHighlyProductiveNeighbors = function(tile) {
 	var adjacentTiles = this.getAdjacentTiles(tile);
 	for (var i = 0; i < adjacentTiles.length; i += 1) {
@@ -748,6 +700,27 @@ CatanMap.prototype.hasHighlyProductiveNeighbors = function(tile) {
 	return false;
 }
 
+CatanMap.prototype.getAdjacentTiles = function(tile) {
+	
+	var tileX = tile.gridX;
+	var tileY = tile.gridY;
+	
+	var adjTiles = [];
+	
+	xshift = [0, 2, 2, 0, -2, -2];
+	yshift = [2, 1, -1, -2, -1, 1];
+	
+	for (var i = 0; i < 6; i += 1) {
+		var adjTile = this.coordToTile[
+			[tileX + xshift[i], tileY + yshift[i]].toString()
+		];
+		if (adjTile) {
+			adjTiles.push(adjTile);
+		}
+	}
+	return adjTiles;	
+}
+//Hextile class aanmaken
 function HexTile() {
 	this.gridX;
 	this.gridY;
@@ -785,7 +758,7 @@ HexTile.prototype.draw = function() {
 	this.yCenter = canvasCenterY + dy*this.gridY;
 	
 	this.drawBase();
-	// Don't draw number if desert or sea
+	// Teken geen nummer als het een desert, sea of haven is
 	if (this.number) {
 		this.drawNumber();
 	}
@@ -805,13 +778,13 @@ HexTile.prototype.drawBase = function() {
 	
 	var angleOffset = Math.PI / 6;
 	
-	// Begin Path and start at top of hexagon
+	
 	drawingContext.beginPath();
 	drawingContext.moveTo (
 		this.xCenter + size * Math.sin(angleOffset),
 		this.yCenter - size * Math.cos(angleOffset)
 	);
-	// Move clockwise and draw hexagon
+	
 	var newAngle;
 	for (var i = 1; i <= 6; i += 1) {
 		newAngle = i * Math.PI / 3;
@@ -821,7 +794,7 @@ HexTile.prototype.drawBase = function() {
 		);
 	}
 	drawingContext.closePath();
-	
+	//Hier plaatst hij de image
 	if (mapStyle == "retro") {
 		
 		var imgCanvas = resourceTypeToImageCanvas[this.resourceType];
@@ -843,7 +816,7 @@ HexTile.prototype.drawBase = function() {
 	
 }
 HexTile.prototype.drawNumber = function() {
-	//hier tekent hij de cijfers op de tiles, ook deze kan makkelijk aangepast worden. 
+	//Hier tekent hij de cijfers op de tiles, en nu ook de probability van de numbers
 	
 	drawingContext.fillStyle = "#FFFFFF";
 	drawingContext.strokeStyle = "#000000";
@@ -871,9 +844,20 @@ HexTile.prototype.drawNumber = function() {
 		this.xCenter,
 		this.yCenter + Math.ceil( 0.85 * fontSizePt/2 )
 	);
-	
+	var driesprong = "";
+	if(this.number == 8 || this.number == 6){driesprong = "*****"} 
+		else if(this.number == 12 || this.number == 2){driesprong = "*"}
+		else if(this.number == 11 || this.number == 3){driesprong = "**"}
+		else if(this.number == 10 || this.number == 4){driesprong = "***"}
+		else if(this.number == 9 || this.number == 5){driesprong = "****"}
+	drawingContext.fillText(
+		driesprong,
+		this.xCenter,
+		this.yCenter + 45
+	);
 }
 
+//Random object uit de array pakken en removen
 Array.prototype.random = function(removeElem) {
 	var idx = Math.floor(Math.random() * this.length);
 	var val = this[idx];
@@ -885,6 +869,8 @@ Array.prototype.random = function(removeElem) {
 Array.prototype.copy = function() {
 	return this.slice();
 }
+
+//Index maken van 6/8 getallen
 Array.prototype.indexOfArray = function(val) {
 	var arr = [];
 	var sIdx = 0;
@@ -900,15 +886,14 @@ Array.prototype.indexOfArray = function(val) {
 	} while (valid);
 	return arr;
 }
+//Voor het wisselen van numbers 6/8
 Array.prototype.swap = function(idx1, idx2) {
 	var tmp = this[idx1];
 	this[idx1] = this[idx2];
 	this[idx2] = tmp;
 }
-
+//Dit is het toevoegen van canvas
 function addCanvas() {
-	//$(mapCanvas).attr("width", 600);
-	//$(mapCanvas).attr("height", 400);
 	mapCanvas = document.createElement("canvas");
 	drawingContext = mapCanvas.getContext('2d');
 	mapCanvas.id = "map-canvas";
@@ -918,7 +903,7 @@ function addCanvas() {
 	document.getElementById("map-container").appendChild(mapCanvas);
 	
 }
-
+//De grootte van de map bepalen
 function sizeCanvas() {
 	var mapContainer = $("div#map-container")[0];
 	$(mapCanvas).attr("width", $(mapContainer).width());
