@@ -16,7 +16,7 @@ namespace KVTQ
 
         }
 
-        public void GenerateLayout(/*var layout*/)
+        public void GenerateLayout(var layout)
         {
 
         }
