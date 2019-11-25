@@ -21,6 +21,11 @@ var resourceTypeToColor = {
 	"desert": "#F2F0A0",
 	"sea": "#0000FF",
 	"randomHarbor": "#0000FF",
+	"randomHarbor2": "#0000FF",
+	"randomHarbor3": "#0000FF",
+	"randomHarbor4": "#0000FF",
+	"randomHarbor5": "#0000FF",
+	"randomHarbor6": "#0000FF",
 	"sheepHarbor": "#0000FF",
 	"clayHarbor": "#0000FF",
 	"grainHarbor": "#0000FF",
@@ -36,6 +41,11 @@ var resourceTypeToImageCanvas = {
 	"grain": null,
 	"desert": null,
 	"randomHarbor": null,
+	"randomHarbor2": null,
+	"randomHarbor3": null,
+	"randomHarbor4": null,
+	"randomHarbor5": null,
+	"randomHarbor6": null,
 	"sheepHarbor": null,
 	"clayHarbor": null,
 	"oreHarbor": null,
@@ -60,6 +70,11 @@ standardMap.resourceDict = {
 	"desert": 1,
 	"sea": 9,
 	"randomHarbor": 4,
+	"randomHarbor2": 0,
+	"randomHarbor3": 0,
+	"randomHarbor4": 0,
+	"randomHarbor5": 0,
+	"randomHarbor6": 0,
 	"sheepHarbor": 1,
 	"clayHarbor": 1,
 	"woodHarbor": 1,
@@ -144,6 +159,7 @@ normalMap.resourceDict = {
 	"sea": 18,
 	"desert": 1,
 	"randomHarbor": 0,
+	"randomHarbor2": 0,
 	"sheepHarbor": 0,
 	"clayHarbor": 0,
 	"woodHarbor": 0,
@@ -219,6 +235,11 @@ expandedMap.resourceDict = {
 	"desert": 2,
 	"sea": 22,
 	"randomHarbor": 0,
+	"randomHarbor2": 0,
+	"randomHarbor3": 0,
+	"randomHarbor4": 0,
+	"randomHarbor5": 0,
+	"randomHarbor6": 0,
 	"sheepHarbor": 0,
 	"clayHarbor": 0,
 	"woodHarbor": 0,
@@ -796,7 +817,19 @@ HexTile.prototype.drawBase = function() {
 	drawingContext.closePath();
 	//Hier plaatst hij de image
 	if (mapStyle == "retro") {
+		if(this.resourceType == "randomHarbor"){
+			var imgCanvas = resourceTypeToImageCanvas[this.resourceType+4	];
 		
+			drawingContext.drawImage(
+				imgCanvas,
+				0, 0, imgCanvas.width, imgCanvas.height, 
+				this.xCenter - size,
+				this.yCenter - dy,
+				2*size,
+				2*dy
+
+		);	}
+		else{
 		var imgCanvas = resourceTypeToImageCanvas[this.resourceType];
 		
 		drawingContext.drawImage(
@@ -807,7 +840,7 @@ HexTile.prototype.drawBase = function() {
 			2*size,
 			2*dy
 
-		);
+		);}
 	} else {
 		drawingContext.fill();
 	}
