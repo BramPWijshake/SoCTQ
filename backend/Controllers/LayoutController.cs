@@ -9,8 +9,8 @@ namespace KVTQ.Controllers
     [Route("/api/StandardLayout/All")]
     public class StandardLayoutAllController : ControllerBase
     {
-        [HttpGet("")]
-        public string GetAllLayouts()
+        [HttpGet]
+        public string GetAllStandardLayouts()
         {
             string Slayouts = "Test All";
 
@@ -22,7 +22,7 @@ namespace KVTQ.Controllers
     public class StandardLayoutSpecificController : ControllerBase
     {
         [HttpGet("{id}")]
-        public string GetLayout(int id)
+        public string GetStandardLayout(int id)
         {
             string Slayout = "Test Specific";
 
@@ -30,15 +30,42 @@ namespace KVTQ.Controllers
         }
     }
 
-    [Route("/api/GenerateLayout")]
-    public class GenerateLayoutController : ControllerBase
+    [Route("/api/Layout/Filtered")]
+    public class LayoutFiltererdController : ControllerBase
     {
-        [HttpGet("{type}/{size}")]
-        public string GenerateLayout(string type, int id)
+        [HttpGet("{name}/{size}/{order}")]
+        public string GetFilteredLayouts(string name, int size, string order)
         {
-            string Glayout = "Test Generate";
+            string Flayout = "Test Filtered";
 
-            return Glayout;
+            return Flayout;
+        }
+    }
+
+    [Route("/api/Layout/Specific")]
+    public class LayoutSpecificController : ControllerBase
+    {
+        [HttpGet("{id}")]
+        public string GetLayout(int id)
+        {
+            
+            string Slayout = "Test Specific";
+            if (id == 3)
+                return Slayout;
+            else
+                return "Leuk Geprobeert";
+        }
+    }
+
+    [Route("/api/Layout/Save")]
+    public class LayoutSaveControlller : ControllerBase
+    {
+        [HttpPost("{json}")]
+        public string SaveLayout(string json)
+        {
+            string confirmed = "false";
+
+            return confirmed;
         }
     }
 }
