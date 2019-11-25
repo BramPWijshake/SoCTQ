@@ -2,52 +2,70 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KVTQ.Controllers
 {
-    [Route("api/v1/layouts")]
-    [ApiController]
-    public class LayoutController : ControllerBase
+    [Route("/api/StandardLayout/All")]
+    public class StandardLayoutAllController : ControllerBase
     {
-        // GET: api/Layout
         [HttpGet]
-        public IEnumerable<object> Get()
+        public string GetAllStandardLayouts()
         {
-            string domain = HttpContext.Request.Scheme + "://" + HttpContext.Request.Host.ToString() + HttpContext.Request.Path;
-            return new object[] {
-                new { id = 1, made = "2019-10-10T11:33:32", size = "4/5", link = domain + "/1" },
-                new { id = 2, made = "2019-10-10T11:33:32", size = "5/6", link = domain + "/2" },
-            };
-        }
+            string Slayouts = "Test All";
 
-        // GET: api/Layout/5
-        [HttpGet("{id}", Name = "Get")]
-        public IEnumerable<object> Get(int id)
-        {
-            return new object[] {
-                new { id = 1, tile = "Resource", type = "Sheep" },
-                new { id = 2, tile = "Harbor", type = "Sheep" },
-            };
+            return Slayouts;
         }
+    }
 
-        // POST: api/Layout
-        [HttpPost]
-        public void Post([FromBody] string value)
+    [Route("/api/StandardLayout/Specific")]
+    public class StandardLayoutSpecificController : ControllerBase
+    {
+        [HttpGet("{id}")]
+        public string GetStandardLayout(int id)
         {
+            string Slayout = "Test Specific";
+
+            return Slayout;
         }
+    }
 
-        // PUT: api/Layout/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+    [Route("/api/Layout/Filtered")]
+    public class LayoutFiltererdController : ControllerBase
+    {
+        [HttpGet("{name}/{size}/{order}")]
+        public string GetFilteredLayouts(string name, int size, string order)
         {
+            string Flayout = "Test Filtered";
+
+            return Flayout;
         }
+    }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+    [Route("/api/Layout/Specific")]
+    public class LayoutSpecificController : ControllerBase
+    {
+        [HttpGet("{id}")]
+        public string GetLayout(int id)
         {
+            
+            string Slayout = "Test Specific";
+            if (id == 3)
+                return Slayout;
+            else
+                return "Leuk Geprobeert";
+        }
+    }
+
+    [Route("/api/Layout/Save")]
+    public class LayoutSaveControlller : ControllerBase
+    {
+        [HttpPost("{json}")]
+        public string SaveLayout(string json)
+        {
+            string confirmed = "false";
+
+            return confirmed;
         }
     }
 }
