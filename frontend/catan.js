@@ -27,10 +27,35 @@ var resourceTypeToColor = {
 	"randomHarbor5": "#0000FF",
 	"randomHarbor6": "#0000FF",
 	"sheepHarbor": "#0000FF",
+	"sheepHarbor2": "#0000FF",
+	"sheepHarbor3": "#0000FF",
+	"sheepHarbor4": "#0000FF",
+	"sheepHarbor5": "#0000FF",
+	"sheepHarbor6": "#0000FF",
 	"clayHarbor": "#0000FF",
-	"grainHarbor": "#0000FF",
+	"clayHarbor2": "#0000FF",
+	"clayHarbor3": "#0000FF",
+	"clayHarbor4": "#0000FF",
+	"clayHarbor5": "#0000FF",
+	"clayHarbor6": "#0000FF",
 	"oreHarbor": "#0000FF",
+	"oreHarbor2": "#0000FF",
+	"oreHarbor3": "#0000FF",
+	"oreHarbor4": "#0000FF",
+	"oreHarbor5": "#0000FF",
+	"oreHarbor6": "#0000FF",
 	"woodHarbor": "#0000FF",
+	"woodHarbor2": "#0000FF",
+	"woodHarbor3": "#0000FF",
+	"woodHarbor4": "#0000FF",
+	"woodHarbor5": "#0000FF",
+	"woodHarbor6": "#0000FF",
+	"grainHarbor": "#0000FF",
+	"grainHarbor2": "#0000FF",
+	"grainHarbor3": "#0000FF",
+	"grainHarbor4": "#0000FF",
+	"grainHarbor5": "#0000FF",
+	"grainHarbor6": "#0000FF",
 	"none": "#ffffff"
 };
 var resourceTypeToImageCanvas = {
@@ -47,10 +72,35 @@ var resourceTypeToImageCanvas = {
 	"randomHarbor5": null,
 	"randomHarbor6": null,
 	"sheepHarbor": null,
+	"sheepHarbor2": null,
+	"sheepHarbor3": null,
+	"sheepHarbor4": null,
+	"sheepHarbor5": null,
+	"sheepHarbor6": null,
 	"clayHarbor": null,
+	"clayHarbor2": null,
+	"clayHarbor3": null,
+	"clayHarbor4": null,
+	"clayHarbor5": null,
+	"clayHarbor6": null,
 	"oreHarbor": null,
+	"oreHarbor2": null,
+	"oreHarbor3": null,
+	"oreHarbor4": null,
+	"oreHarbor5": null,
+	"oreHarbor6": null,
 	"woodHarbor": null,
+	"woodHarbor2": null,
+	"woodHarbor3": null,
+	"woodHarbor4": null,
+	"woodHarbor5": null,
+	"woodHarbor6": null,
 	"grainHarbor": null,
+	"grainHarbor2": null,
+	"grainHarbor3": null,
+	"grainHarbor4": null,
+	"grainHarbor5": null,
+	"grainHarbor6": null,
 	"sea": null
 };
 
@@ -76,10 +126,35 @@ standardMap.resourceDict = {
 	"randomHarbor5": 0,
 	"randomHarbor6": 0,
 	"sheepHarbor": 1,
+	"sheepHarbor2": 0,
+	"sheepHarbor3": 0,
+	"sheepHarbor4": 0,
+	"sheepHarbor5": 0,
+	"sheepHarbor6": 0,
 	"clayHarbor": 1,
-	"woodHarbor": 1,
-	"grainHarbor": 1,
+	"clayHarbor2": 0,
+	"clayHarbor3": 0,
+	"clayHarbor4": 0,
+	"clayHarbor5": 0,
+	"clayHarbor6": 0,
 	"oreHarbor": 1,
+	"oreHarbor2": 0,
+	"oreHarbor3": 0,
+	"oreHarbor4": 0,
+	"oreHarbor5": 0,
+	"oreHarbor6": 0,
+	"woodHarbor": 1,
+	"woodHarbor2": 0,
+	"woodHarbor3": 0,
+	"woodHarbor4": 0,
+	"woodHarbor5": 0,
+	"woodHarbor6": 0,
+	"grainHarbor": 1,
+	"grainHarbor2": 0,
+	"grainHarbor3": 0,
+	"grainHarbor4": 0,
+	"grainHarbor5": 0,
+	"grainHarbor6": 0,
 	"wood": 4,
 	"clay": 3,
 	"wool": 4,
@@ -108,13 +183,6 @@ standardMap.coordinatesArray = [
 	[2,3],[2,1],[2,-1],[2,-3],
 	[4,2],[4,0],[4,-2]
 ];
-//Useless right now
-standardMap.harborAlignments = {
-	1: 1,
-	2: 1,
-	3: 1,
-	4: 1
-}
 
 standardMap.landCoordinatesArray = [
 	[-4,2],[-4,0],[-4,-2],
@@ -140,7 +208,14 @@ standardMap.seaCoordinatesArray2 = [
 
 
 standardMap.harborCoordinatesArray = [
-	[0,-6],[4,-4],[6,-1],[6,3],[2,5],[-2,5],[-6,-1],[-6,3],[-4,-4]
+	[-6,-1],[-6,3],
+	[-4,-4],
+	[-2,5],
+	[0,-6],
+	[2,5],
+	[4,-4],
+	[6,-1],[6,3]
+	
 ];
 
 standardMap.harborCoordinatesArray2 = [
@@ -156,15 +231,44 @@ standardMap.harborCoordinatesArray2 = [
 
 var normalMap = new MapDefinition();
 normalMap.resourceDict = {
-	"sea": 18,
 	"desert": 1,
-	"randomHarbor": 0,
+	"sea": 9,
+	"randomHarbor": 4,
 	"randomHarbor2": 0,
-	"sheepHarbor": 0,
-	"clayHarbor": 0,
-	"woodHarbor": 0,
-	"grainHarbor": 0,
-	"oreHarbor": 0,
+	"randomHarbor3": 0,
+	"randomHarbor4": 0,
+	"randomHarbor5": 0,
+	"randomHarbor6": 0,
+	"sheepHarbor": 1,
+	"sheepHarbor2": 0,
+	"sheepHarbor3": 0,
+	"sheepHarbor4": 0,
+	"sheepHarbor5": 0,
+	"sheepHarbor6": 0,
+	"clayHarbor": 1,
+	"clayHarbor2": 0,
+	"clayHarbor3": 0,
+	"clayHarbor4": 0,
+	"clayHarbor5": 0,
+	"clayHarbor6": 0,
+	"oreHarbor": 1,
+	"oreHarbor2": 0,
+	"oreHarbor3": 0,
+	"oreHarbor4": 0,
+	"oreHarbor5": 0,
+	"oreHarbor6": 0,
+	"woodHarbor": 1,
+	"woodHarbor2": 0,
+	"woodHarbor3": 0,
+	"woodHarbor4": 0,
+	"woodHarbor5": 0,
+	"woodHarbor6": 0,
+	"grainHarbor": 1,
+	"grainHarbor2": 0,
+	"grainHarbor3": 0,
+	"grainHarbor4": 0,
+	"grainHarbor5": 0,
+	"grainHarbor6": 0,
 	"wood": 4,
 	"clay": 3,
 	"wool": 4,
@@ -184,7 +288,7 @@ normalMap.numberDict = {
 	11: 2,
 	12: 1
 }
-//De eerste lijn zijn sea coords
+
 normalMap.coordinatesArray = [
 	[-6,1],[-6,3],[-6,-1],[-6,-3],[-4,4],[-4,-4],[-2,5],[-2,-5],[0,6],[0,-6],[2,5],[2,-5],[4,4],[4,-4],[6,1],[6,3],[6,-1],[6,-3],
 	[-4,2],[-4,0],[-4,-2],
@@ -203,48 +307,81 @@ normalMap.landCoordinatesArray = [
 ];
 
 normalMap.seaCoordinatesArray = [
-	[-6,1],[-6,3],[-6,-1],[-6,-3],
-	[-4,4],[-4,-4],
-	[-2,5],[-2,-5],
-	[0,6],[0,-6],
-	[2,5],[2,-5],
-	[4,4],[4,-4],
-	[6,1],[6,3],[6,-1],[6,-3]
+	[-6,1],[-6,-3],
+	[-4,4],
+	[-2,-5],
+	[0,6],
+	[2,-5],
+	[4,4],
+	[6,1],[6,-3]
 ];
 
 normalMap.seaCoordinatesArray2 = [
-	[-6,1],[-6,3],[-6,-1],[-6,-3],
-	[-4,4],[-4,-4],
-	[-2,5],[-2,-5],
-	[0,6],[0,-6],
-	[2,5],[2,-5],
-	[4,4],[4,-4],
-	[6,1],[6,3],[6,-1],[6,-3]
+	[0,-6],[4,-4],[6,-1],[6,3],[2,5],[-2,5],[-6,-1],[-6,3],[-4,-4]
 ];
 
-normalMap.harborCoordinatesArray = [
 
+normalMap.harborCoordinatesArray = [
+	[-6,-1],[-6,3],
+	[-4,-4],
+	[-2,5],
+	[0,-6],
+	[2,5],
+	[4,-4],
+	[6,-1],[6,3]
+	
 ];
 
 normalMap.harborCoordinatesArray2 = [
-
+	[-6,1],[-6,-3],
+	[-4,4],
+	[-2,-5],
+	[0,6],
+	[2,-5],
+	[4,4],
+	[6,1],[6,-3]
 ];
 
 var expandedMap = new MapDefinition();
 expandedMap.resourceDict = {
 	"desert": 2,
-	"sea": 22,
-	"randomHarbor": 0,
+	"sea": 11,
+	"randomHarbor": 5,
 	"randomHarbor2": 0,
 	"randomHarbor3": 0,
 	"randomHarbor4": 0,
 	"randomHarbor5": 0,
 	"randomHarbor6": 0,
-	"sheepHarbor": 0,
-	"clayHarbor": 0,
-	"woodHarbor": 0,
-	"grainHarbor": 0,
-	"oreHarbor": 0,
+	"sheepHarbor": 2,
+	"sheepHarbor2": 0,
+	"sheepHarbor3": 0,
+	"sheepHarbor4": 0,
+	"sheepHarbor5": 0,
+	"sheepHarbor6": 0,
+	"clayHarbor": 1,
+	"clayHarbor2": 0,
+	"clayHarbor3": 0,
+	"clayHarbor4": 0,
+	"clayHarbor5": 0,
+	"clayHarbor6": 0,
+	"oreHarbor": 1,
+	"oreHarbor2": 0,
+	"oreHarbor3": 0,
+	"oreHarbor4": 0,
+	"oreHarbor5": 0,
+	"oreHarbor6": 0,
+	"woodHarbor": 1,
+	"woodHarbor2": 0,
+	"woodHarbor3": 0,
+	"woodHarbor4": 0,
+	"woodHarbor5": 0,
+	"woodHarbor6": 0,
+	"grainHarbor": 1,
+	"grainHarbor2": 0,
+	"grainHarbor3": 0,
+	"grainHarbor4": 0,
+	"grainHarbor5": 0,
+	"grainHarbor6": 0,
 	"wood": 6,
 	"clay": 5,
 	"wool": 6,
@@ -285,35 +422,45 @@ expandedMap.landCoordinatesArray = [
 ];
 
 expandedMap.seaCoordinatesArray = [
-	[-8,1],[-8,3],[-8,-1],[-8,-3],
-	[-6,4],[-6,-4],
-	[-4,5],[-4,-5],
-	[-2,6],[-2,-6],
-	[0,7],[0,-7],
-	[2,6],[2,-6],
-	[4,5],[4,-5],
-	[6,4],[6,-4],
-	[8,1],[8,3],[8,-1],[8,-3]
+	[-8,1],[-8,-3],
+	[-6,4],
+	[-4,-5],
+	[-2,6],
+	[0,-7],
+	[2,6],
+	[4,-5],
+	[6,4],
+	[8,1],[8,-3]
 ];
 
 expandedMap.seaCoordinatesArray2 = [
-	[-8,1],[-8,3],[-8,-1],[-8,-3],
-	[-6,4],[-6,-4],
-	[-4,5],[-4,-5],
-	[-2,6],[-2,-6],
-	[0,7],[0,-7],
-	[2,6],[2,-6],
-	[4,5],[4,-5],
-	[6,4],[6,-4],
-	[8,1],[8,3],[8,-1],[8,-3]
+	[-8,3],[-8,-1],
+	[-6,-4],[-4,5],
+	[-2,-6],[0,7],
+	[2,-6],[4,5],
+	[6,-4],
+	[8,3],[8,-1]
 ];
 
 expandedMap.harborCoordinatesArray = [
-
+	[-8,3],[-8,-1],
+	[-6,-4],[-4,5],
+	[-2,-6],[0,7],
+	[2,-6],[4,5],
+	[6,-4],
+	[8,3],[8,-1]
 ];
 
 expandedMap.harborCoordinatesArray2 = [
-
+	[-8,1],[-8,-3],
+	[-6,4],
+	[-4,-5],
+	[-2,6],
+	[0,-7],
+	[2,6],
+	[4,-5],
+	[6,4],
+	[8,1],[8,-3]
 ];
 
 //Functies
@@ -486,7 +633,7 @@ CatanMap.prototype.defineMap = function(mapDefinition) {
 }
 CatanMap.prototype.generate = function() {
 	//het genereren van de map	
-	if (this.mapDefinition) {
+	if (this.mapDefinition == expandedMap || this.mapDefinition == normalMap) {
 		
 		this.hexTiles = [];
 		
@@ -526,91 +673,14 @@ CatanMap.prototype.generate = function() {
 		var newCoords = null;
 		var newAlignment = null;
 		var numHarbors = this.mapDefinition.resourceDict["randomHarbor"]+this.mapDefinition.resourceDict["sheepHarbor"]+this.mapDefinition.resourceDict["clayHarbor"]+this.mapDefinition.resourceDict["oreHarbor"]+this.mapDefinition.resourceDict["woodHarbor"]+this.mapDefinition.resourceDict["grainHarbor"];
-
-		var numRandomHarbors = this.mapDefinition.resourceDict["randomHarbor"];
-
-		for (var i = 0; i < numRandomHarbors; i += 1) {
-			var harborHexTile = new HexTile();
-			newCoords = harborCoordinates.random(true);
-			harborHexTile.setCoordinate.apply(
-				harborHexTile,
-				newCoords
-			);
-			harborHexTile.setResourceType("randomHarbor");
-			this.hexTiles.push(harborHexTile);
-			this.coordToTile[newCoords.toString()] = harborHexTile;
-		}
-
-		var numSheepHarbors = this.mapDefinition.resourceDict["sheepHarbor"];
-
-		for (var i = 0; i < numSheepHarbors; i += 1) {
-			var harborHexTile = new HexTile();
-			newCoords = harborCoordinates.random(true);
-			harborHexTile.setCoordinate.apply(
-				harborHexTile,
-				newCoords
-			);
-			harborHexTile.setResourceType("sheepHarbor");
-			this.hexTiles.push(harborHexTile);
-			this.coordToTile[newCoords.toString()] = harborHexTile;
-		}
-
-		var numClayHarbors = this.mapDefinition.resourceDict["clayHarbor"];
-
-		for (var i = 0; i < numClayHarbors; i += 1) {
-			var harborHexTile = new HexTile();
-			newCoords = harborCoordinates.random(true);
-			harborHexTile.setCoordinate.apply(
-				harborHexTile,
-				newCoords
-			);
-			harborHexTile.setResourceType("clayHarbor");
-			this.hexTiles.push(harborHexTile);
-			this.coordToTile[newCoords.toString()] = harborHexTile;
-		}
-
-		var numOreHarbors = this.mapDefinition.resourceDict["oreHarbor"];
-
-		for (var i = 0; i < numOreHarbors; i += 1) {
-			var harborHexTile = new HexTile();
-			newCoords = harborCoordinates.random(true);
-			harborHexTile.setCoordinate.apply(
-				harborHexTile,
-				newCoords
-			);
-			harborHexTile.setResourceType("oreHarbor");
-			this.hexTiles.push(harborHexTile);
-			this.coordToTile[newCoords.toString()] = harborHexTile;
-		}
-
-		var numWoodHarbors = this.mapDefinition.resourceDict["woodHarbor"];
-
-		for (var i = 0; i < numWoodHarbors; i += 1) {
-			var harborHexTile = new HexTile();
-			newCoords = harborCoordinates.random(true);
-			harborHexTile.setCoordinate.apply(
-				harborHexTile,
-				newCoords
-			);
-			harborHexTile.setResourceType("woodHarbor");
-			this.hexTiles.push(harborHexTile);
-			this.coordToTile[newCoords.toString()] = harborHexTile;
-		}
-
-		var numGrainHarbors = this.mapDefinition.resourceDict["grainHarbor"];
-
-		for (var i = 0; i < numGrainHarbors; i += 1) {
-			var harborHexTile = new HexTile();
-			newCoords = harborCoordinates.random(true);
-			harborHexTile.setCoordinate.apply(
-				harborHexTile,
-				newCoords
-			);
-			harborHexTile.setResourceType("grainHarbor");
-			this.hexTiles.push(harborHexTile);
-			this.coordToTile[newCoords.toString()] = harborHexTile;
-		}
-
+		
+		catanMap.generateHarbor("randomHarbor", harborCoordinates);
+		catanMap.generateHarbor("sheepHarbor", harborCoordinates);
+		catanMap.generateHarbor("clayHarbor", harborCoordinates);
+		catanMap.generateHarbor("oreHarbor", harborCoordinates);
+		catanMap.generateHarbor("woodHarbor", harborCoordinates);
+		catanMap.generateHarbor("grainHarbor", harborCoordinates);
+		
 		var numSeas = this.mapDefinition.resourceDict["sea"];
 		
 		for (var i = 0; i < numSeas; i += 1) {
@@ -684,16 +754,20 @@ CatanMap.prototype.generate = function() {
 			this.coordToTile[newCoords.toString()] = newHexTile;
 		}
 		
-	} else {
-		console.log("No map definition.");
+	} else if(this.mapDefinition == standardMap) {
+		console.log("StandaardLoop");
+	}
+	else {
+		console.log("Geen valid Map");
 	}
 }
+
 //Tekenen van de hextiles
 CatanMap.prototype.draw = function() {
 	if (this.hexTiles) {
 		drawingContext.clear();
 		for (var i = 0; i < this.hexTiles.length; i += 1) {
-			this.hexTiles[i].draw();
+			setInterval(this.hexTiles[i].draw(), 3000);
 		}
 	}	
 }
@@ -751,7 +825,10 @@ function HexTile() {
 	this.fillStyle = defaultFillStyle;
 	this.number;
 	this.alignment;
+	this.value;
+	this.surroundvalue;
 }
+
 HexTile.prototype.strokeStyle = strokeStyle;
 HexTile.prototype.lineWidth = lineWidth;
 HexTile.prototype.hexColorMap = resourceTypeToColor;
@@ -774,6 +851,51 @@ HexTile.prototype.setCoordinate = function(x,y) {
 	this.gridX = x;
 	this.gridY = y;
 }
+
+CatanMap.prototype.generateHarbor = function(type, harborcoordinates) {
+	var numHarbors = this.mapDefinition.resourceDict[type];
+
+	for (var i = 0; i < numHarbors; i += 1) {
+		var harborHexTile = new HexTile();
+		newCoords = harborcoordinates.random(true);
+		harborHexTile.setCoordinate.apply(
+			harborHexTile,
+			newCoords
+		);
+		harborHexTile.Align(harborHexTile);
+		harborHexTile.setResourceType(type);
+		this.hexTiles.push(harborHexTile);
+		this.coordToTile[newCoords.toString()] = harborHexTile;
+	}
+
+}
+
+
+HexTile.prototype.setAlignment = function(alignment) {
+	this.alignment = alignment;
+}
+
+HexTile.prototype.Align = function(harborHexTile) {
+	if(harborHexTile.gridX == 6 && harborHexTile.gridY == 3 || harborHexTile.gridX == 6 && harborHexTile.gridY == 1 || harborHexTile.gridX == 4 && harborHexTile.gridY == 4 || harborHexTile.gridX == 4 && harborHexTile.gridY == 5 || harborHexTile.gridX == 6 && harborHexTile.gridY == 4 || harborHexTile.gridX == 8 && harborHexTile.gridY == 3 || harborHexTile.gridX == 8 && harborHexTile.gridY == 1){
+		harborHexTile.setAlignment("upleft");
+	}
+	else if(harborHexTile.gridX == 2 && harborHexTile.gridY == 5 || harborHexTile.gridX == 0 && harborHexTile.gridY == 6 || harborHexTile.gridX == -2 && harborHexTile.gridY == 5 || harborHexTile.gridX == 0 && harborHexTile.gridY == 7 || harborHexTile.gridX == 2 && harborHexTile.gridY == 6 || harborHexTile.gridX == -2 && harborHexTile.gridY == 6){
+		harborHexTile.setAlignment("up");
+	}
+	else if(harborHexTile.gridX == -4 && harborHexTile.gridY == 4 || harborHexTile.gridX == -6 && harborHexTile.gridY == 3 || harborHexTile.gridX == -6 && harborHexTile.gridY == 1 || harborHexTile.gridX == -4 && harborHexTile.gridY == 5 || harborHexTile.gridX == -6 && harborHexTile.gridY == 4 || harborHexTile.gridX == -8 && harborHexTile.gridY == 3 || harborHexTile.gridX == -8 && harborHexTile.gridY == 1){
+		harborHexTile.setAlignment("upright");
+	}
+	else if(harborHexTile.gridX == -2 && harborHexTile.gridY == -5 || harborHexTile.gridX == 0 && harborHexTile.gridY == -6 || harborHexTile.gridX == 2 && harborHexTile.gridY == -5 || harborHexTile.gridX == 0 && harborHexTile.gridY == -7 || harborHexTile.gridX == 2 && harborHexTile.gridY == -6 || harborHexTile.gridX == -2 && harborHexTile.gridY == -6){
+		harborHexTile.setAlignment("down");
+	}
+	else if(harborHexTile.gridX == -6 && harborHexTile.gridY == -1 || harborHexTile.gridX == -6 && harborHexTile.gridY == -3 || harborHexTile.gridX == -4 && harborHexTile.gridY == -4 || harborHexTile.gridX == -4 && harborHexTile.gridY == -5 || harborHexTile.gridX == -6 && harborHexTile.gridY == -4 || harborHexTile.gridX == -8 && harborHexTile.gridY == -3 || harborHexTile.gridX == -8 && harborHexTile.gridY == -1){
+		harborHexTile.setAlignment("downright");
+	}
+	else if(harborHexTile.gridX == 4 && harborHexTile.gridY == -4 || harborHexTile.gridX == 6 && harborHexTile.gridY == -3 || harborHexTile.gridX == 6 && harborHexTile.gridY == -1 || harborHexTile.gridX == -4 && harborHexTile.gridY == 5 || harborHexTile.gridX == 6 && harborHexTile.gridY == -4 || harborHexTile.gridX == 8 && harborHexTile.gridY == -3 || harborHexTile.gridX == 8 && harborHexTile.gridY == -1){
+		harborHexTile.setAlignment("downleft");
+	}
+}
+
 HexTile.prototype.draw = function() {
 	this.xCenter = canvasCenterX + dx*this.gridX;
 	this.yCenter = canvasCenterY + dy*this.gridY;
@@ -817,8 +939,8 @@ HexTile.prototype.drawBase = function() {
 	drawingContext.closePath();
 	//Hier plaatst hij de image
 	if (mapStyle == "retro") {
-		if(this.resourceType == "randomHarbor"){
-			var imgCanvas = resourceTypeToImageCanvas[this.resourceType+4	];
+		if(this.alignment == "up"){
+			var imgCanvas = resourceTypeToImageCanvas[this.resourceType+4];
 		
 			drawingContext.drawImage(
 				imgCanvas,
@@ -829,6 +951,66 @@ HexTile.prototype.drawBase = function() {
 				2*dy
 
 		);	}
+		else if(this.alignment == "upleft"){
+			var imgCanvas = resourceTypeToImageCanvas[this.resourceType+3];
+		
+			drawingContext.drawImage(
+				imgCanvas,
+				0, 0, imgCanvas.width, imgCanvas.height, 
+				this.xCenter - size,
+				this.yCenter - dy,
+				2*size,
+				2*dy
+			);
+		}
+		else if(this.alignment == "upright"){
+			var imgCanvas = resourceTypeToImageCanvas[this.resourceType+5];
+		
+			drawingContext.drawImage(
+				imgCanvas,
+				0, 0, imgCanvas.width, imgCanvas.height, 
+				this.xCenter - size,
+				this.yCenter - dy,
+				2*size,
+				2*dy
+			);
+		}
+		else if(this.alignment == "down"){
+			var imgCanvas = resourceTypeToImageCanvas[this.resourceType];
+		
+			drawingContext.drawImage(
+				imgCanvas,
+				0, 0, imgCanvas.width, imgCanvas.height, 
+				this.xCenter - size,
+				this.yCenter - dy,
+				2*size,
+				2*dy
+			);
+		}
+		else if(this.alignment == "downleft"){
+			var imgCanvas = resourceTypeToImageCanvas[this.resourceType+2];
+		
+			drawingContext.drawImage(
+				imgCanvas,
+				0, 0, imgCanvas.width, imgCanvas.height, 
+				this.xCenter - size,
+				this.yCenter - dy,
+				2*size,
+				2*dy
+			);
+		}
+		else if(this.alignment == "downright"){
+			var imgCanvas = resourceTypeToImageCanvas[this.resourceType+6];
+		
+			drawingContext.drawImage(
+				imgCanvas,
+				0, 0, imgCanvas.width, imgCanvas.height, 
+				this.xCenter - size,
+				this.yCenter - dy,
+				2*size,
+				2*dy
+			);
+		}
 		else{
 		var imgCanvas = resourceTypeToImageCanvas[this.resourceType];
 		
@@ -878,11 +1060,26 @@ HexTile.prototype.drawNumber = function() {
 		this.yCenter + Math.ceil( 0.85 * fontSizePt/2 )
 	);
 	var driesprong = "";
-	if(this.number == 8 || this.number == 6){driesprong = "*****"} 
-		else if(this.number == 12 || this.number == 2){driesprong = "*"}
-		else if(this.number == 11 || this.number == 3){driesprong = "**"}
-		else if(this.number == 10 || this.number == 4){driesprong = "***"}
-		else if(this.number == 9 || this.number == 5){driesprong = "****"}
+		if(this.number == 8 || this.number == 6){
+			driesprong = "*****";
+			this.surroundvalue = 5;
+		} 
+		else if(this.number == 12 || this.number == 2){
+			driesprong = "*";
+			this.surroundvalue = 1;
+		}
+		else if(this.number == 11 || this.number == 3){
+			driesprong = "**";
+			this.surroundvalue = 2;
+		}
+		else if(this.number == 10 || this.number == 4){
+			driesprong = "***";
+			this.surroundvalue = 3;
+		}
+		else if(this.number == 9 || this.number == 5){
+			driesprong = "****";
+			this.surroundvalue = 4;
+		}
 	drawingContext.fillText(
 		driesprong,
 		this.xCenter,
@@ -957,3 +1154,9 @@ CanvasRenderingContext2D.prototype.clear =
       this.restore();
     }           
 };
+
+/*function to_image(){
+                var mapCanvas = document.getElementById("canvas");
+                document.getElementById("theimage").src = mapCanvas.toDataURL();
+                Canvas2Image.saveAsPNG(canvas);
+            }*/
