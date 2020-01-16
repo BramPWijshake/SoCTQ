@@ -50,32 +50,25 @@ namespace KVTQ.DAL
             using (MySqlConnection conn = _DataAccess.Connection)
             {
                 //declareren query 
-                string query = "SELECT * FROM layout WHERE ID='@id'";
+                string query = "SELECT NAME, JSON, SIZE FROM LAYOUT l WHERE l.ID = @id";
 
                 //invoeren query
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.Add(new MySqlParameter("@id", id));
 
                 //uitvoeren query
-                try
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
                 {
-                    MySqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.HasRows)
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            name = reader.GetString(0);
-                            json = reader.GetString(1);
-                            size = reader.GetInt32(2);
-                        }
+                        name = reader.GetString(0);
+                        json = reader.GetString(1);
+                        size = reader.GetInt32(2);
                     }
+                }
 
-                    conn.Close();
-                }
-                catch(MySqlException ex)
-                {
-                    throw new Exception(ex.Message);
-                }
+                conn.Close();
             }
 
             return json;

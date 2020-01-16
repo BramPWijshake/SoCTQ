@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using KVTQ.DAL;
+
 
 namespace KVTQ.Controllers
 {
@@ -24,8 +26,16 @@ namespace KVTQ.Controllers
         [HttpGet("{id}")]
         public string GetStandardLayout(int id)
         {
-            string Slayout = "Test Specific";
-
+            LayoutDA layoutDA = new LayoutDA();
+            string Slayout;
+            try 
+            {
+                Slayout = layoutDA.getLayout(id);
+            }
+            catch(Exception e)
+            {
+                return e.ToString();
+            }
             return Slayout;
         }
     }

@@ -15,7 +15,7 @@ namespace KVTQ
 
         }
 
-        public void GenerateLayout(var jsonlayout)
+        public void GenerateLayout(/*var jsonlayout*/)
         {
 
         }
