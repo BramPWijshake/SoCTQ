@@ -11,10 +11,10 @@ namespace KVTQ.DAL
 {
     public abstract class _DataAccess
     {
-    /*
+    
         private static readonly string connectionString = @"Server=studmysql01.fhict.local;Database=dbi345747;Uid=dbi345747;Pwd=KVTQ123!;";
 
-        MySqlConnectionStringBuilder conn_string = new MySqlConnectionStringBuilder();
+       /* MySqlConnectionStringBuilder conn_string = new MySqlConnectionStringBuilder();
         conn_string.Server = "127.0.0.1";
         conn_string.Port = 3306;
         conn_string.UserID = "root";
@@ -22,8 +22,8 @@ namespace KVTQ.DAL
         conn_string.Database = "myDB";
 
         protected string query;
-
-        protected static MySqlConnection Connection
+        */
+        public static MySqlConnection Connection
         {
             get
             {
@@ -33,6 +33,6 @@ namespace KVTQ.DAL
                 return connection;
             }
         }
-    */
+    
     }
 }
